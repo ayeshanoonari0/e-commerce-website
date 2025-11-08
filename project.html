@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<style>
+  body{
+    background-color: #E2DCDE;
+}
+  .navbar{
+    background-color:#19535F;
+    color: aliceblue;
+  }
+  .nav-link{
+    color: aliceblue;
+  }
+  .container{
+    height: 1000px;
+  }
+.autos{
+background-image: url(images/saad\ autos.jpg);
+height: 600px;
+background-size: cover;
+background-position: center;
+}
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px; 
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.card {
+  background: #ffffff;
+  border: none;
+  border-radius: 16px; 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); 
+  transition: all 0.3s ease;
+  width: 260px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px); 
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+.card img {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  height: 220px;
+  object-fit: cover; 
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08); 
+}
+
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.card-body h5 {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.card .btn {
+  background-color: #563635;
+  border: none;
+  color: white;
+  font-weight: 500;
+  border-radius: 25px;
+  padding: 8px 18px;
+  transition: all 0.3s ease;
+}
+
+.card .btn:hover {
+  background-color: #084298;
+  transform: scale(1.05);
+}
+
+.footer{
+   background-color:#19535F;
+ height: 150px;
+ color: rgb(255, 255, 255);
+text-align: center;
+font-size: larger;
+font-weight: bold;
+
+}
+
+/* Side Cart Styling */
+.side-cart {
+  position: fixed;
+  top: 0;
+  right: -350px; 
+  width: 350px;
+  height: 100%;
+  background-color: #ddd4d4; 
+  box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  z-index: 1050;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-cart.open {
+  right: 0;
+}
+
+.side-cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.side-cart-header h4 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+#close-cart {
+  font-size: 1.2rem;
+  line-height: 1;
+  border: none;
+  background: transparent;
+}
+
+.side-cart-items {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.side-cart-items div {
+  padding: 10px 0;
+}
+
+.side-cart-items .remove-item {
+  background-color: #dc3545;
+  border: none;
+}
+
+.side-cart-items .remove-item:hover {
+  background-color: #c82333;
+}
+
+.side-cart-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Scrollbar styling for side-cart */
+.side-cart-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.side-cart-items::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
+}
+
+.side-cart-items::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  font-size: 0.9rem;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .side-cart {
+    width: 100%;
+  }
+}
+/* Media Queries for responsiveness */
+
+/* Large tablets / small desktops */
+@media (max-width: 1200px) {
+  .card-img-top {
+    height: 180px;
+  }
+  .side-cart {
+    width: 280px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .card-img-top {
+    height: 160px;
+  }
+  .side-cart {
+    width: 250px;
+  }
+  footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small devices / large phones */
+@media (max-width: 768px) {
+  .card-img-top {
+    height: 150px;
+  }
+  .side-cart {
+    width: 220px;
+    padding: 0.8rem;
+  }
+  #cart-icon {
+    font-size: 0.9rem;
+  }
+  footer p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small devices / phones */
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 130px;
+  }
+  .side-cart {
+    width: 200px;
+    padding: 0.5rem;
+  }
+  #cart-icon {
+    font-size: 0.8rem;
+  }
+  footer p {
+    font-size: 0.8rem;
+  }
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="container">
+            <nav class="navbar">
+  <div class="container-fluid">
+    <a class="nav-link" href="#">HOME</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#services">SERVICES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contactus">CONTACT US</a>
+        </li>
+         <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    PRODUCTS
+  </a>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#oil">ENGINE OILS</a></li>
+    <li><a class="dropdown-item" href="#cabin/acfilters">CABIN/AC FILTERS</a></li>
+     <li><a class="dropdown-item" href="#oilfilters">OIL FILTERS</a></li>
+         <li><a class="dropdown-item" href="#airfilters">AIR FILTERS</a></li>
+  </ul>
+</div>
+         <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    OIL BRANDS
+  </a>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#Toyota">Toyota</a></li>
+    <li><a class="dropdown-item" href="#Honda">Honda</a></li>
+     <li><a class="dropdown-item" href="#PSO">PSO</a></li>
+         <li><a class="dropdown-item" href="#Havoline">Havoline</a></li>
+  </ul>
+</div>
+       
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+<button id="cart-icon" class="btn btn-primary">
+  🛒 Cart
+</button>
+
+<div class="autos">
+  
+</div>
+
+<div id="oil">
+<h1> ENGINE OILS:</h1>
+<h2 id="Toyota">Toyota</h2>
+
+<div class="card-group">
+  <div class="card">
+    <img src="images/t 1030.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Petron Plus Toyota 10W30 - 4L</h5>
+      <h5>PKR : 7850</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/t 0 20.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Engine Oil 0W-20 - 4L</h5>
+      <h5>PKR :13000</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/t 5w30 pkr 12000.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Taglon X 5W30 Synthetic Technology - 4L</h5>
+      <h5>PKR : 12000</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/t-20w-50-pkr 7383.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Genuine Old Excelron 20W-50 SJ Engine Oil - 4L</h5>
+      <h5>PKR :7383 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+</div>
+  <div class="card-group">
+  <div class="card">
+    <img src="images/t 2050 3l rs 5750.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Petron Engine Oil 20W-50   3L</h5>
+      <h5>PKR : 5750</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/t-10w-30-3-litre-.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Petron Plus Engine Oil 10W-30 - 3 Litre</h5>
+      <h5>PKR : 6100 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/t-10w-30-3-litre-.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Petron Plus Engine Oil 10W-30 - 3 Litre</h5>
+      <h5>PKR : 6100 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  
+  <div class="card">
+    <img src="images/t 5 30 3l.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Taglon X Genuine Engine Oil 5W-30 3.5L</h5>
+      <h5>PKR : 8850 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+ </div>
+ <br>
+  <div>
+   <h2 id="Honda">Honda</h2>
+  </div>
+  <div class="card-group">
+  <div class="card">
+    <img src="images/honda 0w20 3.7.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda Genuine 0W20 SP Engine Oil - 3.7L</h5>
+      <h5>PKR : 10120</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/honda 5 30 3l.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda fully synthetic Engine Oil SN 5W-30 3.7L</h5>
+      <h5>PKR : 8000 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/honda-sn-10w-30-3l.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda Genuine Engine Oil SN 10W-30 3.7L</h5>
+      <h5>PKR : 6850 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/honda 530 genine 3l.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda Genuine Engine Oil SN 10W-30 3.7L</h5>
+      <h5>PKR : 6850 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+
+  
+ </div>
+ <br>
+ <div>
+   <h2 id="PSO">PSO</h2>
+  </div>
+  <div class="card-group">
+  <div class="card">
+    <img src="images/pso-carient fully 5 30 4l.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PSO Carient Fully Synthetic 5W-30 - 4 litre </h5>
+      <h5>PKR : 7800</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/pso 530 4l.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PSO Carient S-PRO(5W-30) 4L</h5>
+      <h5>PKR : 6000</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/pso 020.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PSO Carient S-PRO (0W-20) 4L</h5>
+      <h5>PKR : 7700 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/pso20504l.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PSO Carient Plus 20W-50 SG/CD Engine Oil - 4L</h5>
+      <h5>PKR : 5100 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+
+  
+ </div>
+  <div class="card-group">
+  <div class="card">
+    <img src="images/pso1030.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PSO Carient Ultra 10W-30 Sn/CF Engine Oil - 4L</h5>
+      <h5>PKR : 6509</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/deo pso 2050.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PSO DEO 6000 CF-4/SG, 20W-50 Engine Oil</h5>
+      <h5>PKR : 4830 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/deo1540.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PSO DEO 8000 15W-40 NEW SAE Engine Oil - 4L</h5>
+      <h5>PKR : 5520 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/pso 3l.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PSO Carient Plus Motor Oil 20W-50 SG/CD Engine Oil - 3L
+</h5>
+      <h5>PKR : 3830 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+   <br>
+ <div>
+   <h2 id="Havoline">Havoline</h2>
+  </div>
+  <div class="card-group">
+  <div class="card">
+    <img src="images/hav0204l.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">CALTEX Havoline ProDS Fully Synthetic LE SAE 0W-20 - 4 Litre | Engine Oil</h5>
+      <h5>PKR : 13000</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/hav10304l.jpeg" class="card-1img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">HAVOLINE FORMULA SAE 10W-30 - 4L</h5>
+      <h5>PKR : 6020</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/hav2050 3l.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">HAVOLINE MOTOR OIL SAE 20W-50 (3 L)</h5>
+      <h5>PKR : 3544 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/hav2050 4l.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Havoline Motor Oil SAE 20W-50 | Engine Oil | 4L</h5>
+      <h5>PKR : 5434</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+
+  
+ 
+
+</div>
+</div>
+<div class="container2">
+  <div id="airfilters">
+    <h1>AIR FILTERS</h1>
+<div class="card-group">
+  <div class="card">
+    <img src="images/AIR-FILTER-HONDA pkr 495.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda BRV Model 2017, Guard Air Filter: GDA-2057</h5>
+      <h5>PKR : 439 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/AIR-FILTER-TOYOTA-10-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Corolla, Guard Air Filter: GDA-1050</h5>
+      <h5>PKR : 440</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/AIR-FILTER-SUZUKI--768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">SUZUKI Mehran Euro-2 EFI, Guard Air Filter: GDA-2028</h5>
+      <h5>PKR : 327</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/AIR-FILTER-SUZUKI-WAGON-R-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Suzuki Wagon R/ Cultus M-2017, Guard Air Filter: GDA-2042</h5>
+      <h5>PKR : 408 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+  <div class="card-group">
+  <div class="card">
+    <img src="images/AIR FILTER TOYOTA GDA-1060.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AIR FILTER TOYOTA GDA-1060</h5>
+      <h5>PKR : 450 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/air-filter honda 2012 26.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda City Model 2003, Guard Air Filter: GDA-2012</h5>
+      <h5>PKR : 435</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/_AIR-FILTER-SUZUKI-2-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Suzuki Swift Model 2009 (ONWARDS), Guard Air Filter: GDA-2027</h5>
+      <h5>PKR : 399</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/air filter kia 1134.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">KIA Sportage & Hyundai Tucson, Guard Air Filter: GDA-804</h5>
+      <h5>PKR : 1135 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+</div>
+<div class="card-group">
+  <div class="card">
+    <img src="images/AIR-FILTER-HONda civic orial.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda Civic 1.8 Vtec Oriel Model 2017, Guard Air Filter: GDA-2054</h5>
+      <h5>PKR : 578  </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/air filter fxGDA-848-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">SUZUKI 800cc FX, Alto, Mehran, Guard Air Filter: GDA-848</h5>
+      <h5>PKR : 333 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/air filter swift new.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Suzuki Ciaz/Suzuki Swift New Model 2023, Guard Air Filter: GDA-805</h5>
+      <h5>PKR : 433</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/AIR-FILTER-TOYOTA revo fortuner.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Revo & Fortuner Model 2017, Guard Air Filter: GDA-2056</h5>
+      <h5>PKR : 812  </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+   <div id="oilfilters">
+    <h1>OIL FILTER</h1> 
+<div class="card-group">
+  <div class="card">
+    <img src="images/OIL-FILTER-SUZUKI-DAIHATSU.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">OIL FILTER SUZUKI/DAIHATSU GDO-158</h5>
+      <h5>PKR : 365  </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/OIL-FILTER-SUZUKI-WAGON-R-.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">OIL FILTER SUZUKI WAGON-R GDO-116</h5>
+      <h5>PKR : 365</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/OIL-FILTER-TOYOTA-23-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">OIL FILTER TOYOTA GDO-151</h5>
+      <h5>PKR : 380 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/OIL-FILTER-TOYOTA vitz.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Vitz, Guard Oil Filter: GDO-0060</h5>
+      <h5>PKR : 376 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+<div class="card-group">
+  <div class="card">
+    <img src="images/OIL-FILTER-HONDA civic 524pkr .jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda Civic 1.8 VVTI/CITY, Guard Oil Filter: GDO-197</h5>
+      <h5>PKR : 524 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/OIL-FILTER-HONDA old 439pkr.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda Civic & City 1995 model onwards, Guard Oil Filter: GDO-156</h5>
+      <h5>PKR : 439 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/OIL-FILTER-TOYOTAyaris .jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Yaris, Guard Oil Filter: GDO-155</h5>
+      <h5>PKR : 357</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/OIL-FILTER-TOYOTA gli xli 615pkr.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Corolla XLI/GLI, Altis, Guard Oil Filter: GDO-199</h5>
+      <h5>PKR :615 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+<div class="card-group">
+  <div class="card">
+    <img src="images/OIL-FILTER-TOYOTA-REVO-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Toyota Revo/Fortuner Model 2017 Onwards, Guard Oil Filter: GDO-313</h5>
+      <h5>PKR : 340 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/OIL-FILTER-DAIHATSU-COURE--768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">OIL FILTER DAIHATSU/COURE GDO-172</h5>
+      <h5>PKR : 360 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/OIL-FILTER-MG-HS-2020-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">MG HS Car, Model 2020, Guard Oil Filter: GDO-112</h5>
+      <h5>PKR : 527 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+  </div>
+   <div id="cabin/acfilters">
+    <h1>CABIN/AC FILTERS</h1>
+    <div class="card-group">
+  <div class="card">
+    <img src="images/cabin FILTER-SUZUKI-ALTO 309 .jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter Suzuki Alto Model-2019, Guard Air Filter: GDA-013</h5>
+      <h5>PKR : 309 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/cabin FILTER-VITZ-CAR-AC-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter TOYOTA Vitz, Guard Air Filter: GDA-004</h5>
+      <h5>PKR : 400</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/cabin FILTER-CABIN-TOYOTA-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter , Guard Air Filter TOYOTA VIGO: GDA-012</h5>
+      <h5>PKR : 1400</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/cabin FILTER-DFSK-GLORY-2020-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter , Guard Air Filter DFSK Glory 2020: GDA-019</h5>
+      <h5>PKR : 699 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+  <div class="card-group">
+  <div class="card">
+    <img src="images/cabin-FILTER-KIA-PICANTO-2020-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter , Guard Air Filter KIA Picanto 2020: GDA-015</h5>
+      <h5>PKR : 405 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/cabin-FILTER-KIA-SPORTAGE--768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter , Guard Air Filter KIA Sportage & HYUNDAI Tucson: GDA-014</h5>
+      <h5>PKR : 789</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/cabin-FILTER-MG-HS-2020-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter , Guard Air Filter MG HS 2020: GDA-017</h5>
+      <h5>PKR : 1499 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/cabinFILTER-MG-ZS-2021-768x768.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter , Guard Air Filter MG ZS 2021: GDA-016</h5>
+      <h5>PKR : 1550 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+  <div class="card-group">
+  <div class="card">
+    <img src="images/CABIN-FILTER-HONDA-element.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter , Guard Air Filter HONDA: GDA-002</h5>
+      <h5>PKR : 699 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/ELEMENT-AIR-CABIN-FILTER honda 003.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">AC Filter , Guard Air Filter HONDA: GDA-003</h5>
+      <h5>PKR :699 </h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/toyota-corolla-2014.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"> Toyota Corolla 2014-2017 Leppon Cabin Filter - AC-113</h5>
+      <h5>PKR : 1100</h5>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="images/honda-civic-2007.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Honda Civic 2007-2012 Reborn Leppon Cabin Filter - AC-106</h5>
+      <h5>PKR : 1000 </h5>
+            <a href="#" class="btn btn-primary">Add to cart</a>
+    </div>
+  </div>
+  </div>
+</div>
+<footer class="footer">
+<p id="contactus">
+  Contact us : 03003151908
+  </p>
+<p id="services">For services visit us</p>
+<p>location : Near Sukkur CT and Infertility Center Barrage Colony,Workshop Road,Sukkur
+</p>
+</footer>
+<!-- Side Cart -->
+<div id="side-cart" class="position-fixed top-0 end-0 bg-light shadow p-3" 
+     style="width: 350px; height: 100vh; transform: translateX(100%); transition: transform 0.4s ease; z-index: 2000;">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="m-0">🛍️ Your Cart</h4>
+    <button id="close-cart" class="btn btn-sm btn-outline-secondary">&times;</button>
+  </div>
+
+  <div id="cart-items" style="max-height: 45vh; overflow-y: auto; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 10px 0;">
+    <p class="text-center">Your cart is empty.</p>
+  </div>
+
+  <div class="mt-3">
+    <h5 class="text-end">Total: <span id="cart-total">PKR 0</span></h5>
+  </div>
+
+  <!-- Checkout Form -->
+  <div class="checkout-form mt-4 border-top pt-3">
+    <h5 class="mb-3">Checkout Details</h5>
+
+    <div class="mb-2">
+      <label for="name" class="form-label mb-1">Full Name</label>
+      <input type="text" id="name" class="form-control form-control-sm" placeholder="Enter your name">
+    </div>
+
+    <div class="mb-2">
+      <label for="phone" class="form-label mb-1">Phone Number</label>
+      <input type="tel" id="phone" class="form-control form-control-sm" placeholder="03xx-xxxxxxx">
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label mb-1">Address</label>
+      <textarea id="address" class="form-control form-control-sm" rows="2" placeholder="Delivery address"></textarea>
+    </div>
+
+    <button id="checkout-btn" class="btn btn-success w-100">Proceed to Checkout</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Elements (robust lookups so script won't throw) ---
+  const cartIcon = document.getElementById('cart-icon');
+  const sideCart = document.getElementById('side-cart') || document.querySelector('.side-cart');
+  const cartItemsContainer = document.getElementById('cart-items');
+  const cartTotalEl = document.getElementById('cart-total');
+  const closeCartBtn = document.getElementById('close-cart');
+  const checkoutBtn = document.getElementById('checkout-btn');
+
+  // If required DOM nodes are missing, we gracefully exit (no uncaught errors).
+  if (!sideCart || !cartItemsContainer || !cartTotalEl) {
+    console.warn('Cart script: missing expected DOM elements. Make sure #side-cart, #cart-items and #cart-total exist.');
+    return;
+  }
+
+  // --- Internal cart storage ---
+  // Each item: { id: string, title: string, priceNumber: number, priceText: string, qty: number }
+  const cart = [];
+
+  // --- Helpers ---
+  function parsePriceToNumber(text) {
+    // extract numbers and decimals from strings like "PKR : 7,850" or "PKR : 7850"
+    if (!text) return 0;
+    const num = text.replace(/[^0-9.]/g, ''); // keep digits and dot
+    return parseFloat(num) || 0;
+  }
+
+  function openCart() {
+    // prefer CSS class 'open' (many of your styles reference .open), also fallback to inline transform
+    if (sideCart.classList) sideCart.classList.add('open');
+    sideCart.style.transform = sideCart.style.transform || 'translateX(0)'; // keep safe fallback
+    sideCart.style.transform = 'translateX(0)';
+  }
+
+  function closeCart() {
+    if (sideCart.classList) sideCart.classList.remove('open');
+    // revert to off-screen (works with our side-cart initial style translateX(100%) in the provided HTML)
+    sideCart.style.transform = 'translateX(100%)';
+  }
+
+  function formatCurrency(n) {
+    // format without locale issues: "PKR 1,234.00"
+    return 'PKR ' + Number(n).toFixed(2);
+  }
+
+  // --- Update UI ---
+  function renderCart() {
+    cartItemsContainer.innerHTML = ''; // clear
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<p class="text-center">Your cart is empty.</p>';
+      cartTotalEl.innerText = 'PKR 0';
+      return;
+    }
+
+    let total = 0;
+
+    // create document fragment for performance
+    const frag = document.createDocumentFragment();
+
+    cart.forEach((item, index) => {
+      const row = document.createElement('div');
+      row.className = 'd-flex justify-content-between align-items-center mb-2 border-bottom pb-2';
+
+      // left: title + small price x qty
+      const left = document.createElement('div');
+      left.innerHTML = `<strong>${escapeHtml(item.title)}</strong><br><small>${item.priceText} × ${item.qty}</small>`;
+
+      // right: price and remove button stacked vertically on narrow screens
+      const right = document.createElement('div');
+      right.className = 'd-flex align-items-center gap-2';
+
+      const priceEl = document.createElement('div');
+      priceEl.innerText = formatCurrency(item.priceNumber * item.qty);
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'btn btn-sm btn-danger remove-item';
+      removeBtn.dataset.index = index;
+      removeBtn.textContent = 'Remove';
+
+      right.appendChild(priceEl);
+      right.appendChild(removeBtn);
+
+      row.appendChild(left);
+      row.appendChild(right);
+
+      frag.appendChild(row);
+
+      total += (item.priceNumber * item.qty);
+    });
+
+    cartItemsContainer.appendChild(frag);
+    cartTotalEl.innerText = formatCurrency(total);
+
+    // attach remove listeners (delegation alternative is used below)
+  }
+
+  // Utility to escape HTML when injecting titles
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (s) => {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+      return map[s];
+    });
+  }
+
+  // --- Add to cart logic ---
+  // match the markup you used: <a class="btn btn-primary">Add to cart</a> inside .card
+  const addButtons = document.querySelectorAll('.card .btn.btn-primary');
+
+  addButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // find the containing card and the title + price elements (robust lookups)
+      const card = btn.closest('.card');
+      if (!card) return;
+
+      const titleEl = card.querySelector('.card-title');
+      const priceEl = Array.from(card.querySelectorAll('h5')).slice(1)[0] || card.querySelector('h5:nth-of-type(2)') || card.querySelector('h5');
+
+      const title = titleEl ? titleEl.innerText.trim() : 'Item';
+      const priceText = priceEl ? priceEl.innerText.trim() : 'PKR 0';
+      const priceNumber = parsePriceToNumber(priceText);
+
+      // create a simple id from title (if several identical items exist, this will treat them as same product and increment qty)
+      const id = title; // safe for your current data; can be changed to a unique SKU later
+
+      // try to find existing item
+      const existing = cart.find(i => i.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id, title, priceNumber, priceText, qty: 1 });
+      }
+
+      renderCart();
+      openCart();
+    });
+  });
+
+  // --- Remove item using event delegation on cartItemsContainer ---
+  cartItemsContainer.addEventListener('click', (e) => {
+    const btn = e.target.closest('.remove-item');
+    if (!btn) return;
+    const idx = Number(btn.dataset.index);
+    if (!Number.isNaN(idx)) {
+      cart.splice(idx, 1);
+      renderCart();
+    }
+  });
+
+  // --- Open/close using provided buttons (if present) ---
+  if (cartIcon) {
+    cartIcon.addEventListener('click', (e) => {
+      e.preventDefault();
+      openCart();
+    });
+  }
+
+  if (closeCartBtn) {
+    closeCartBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeCart();
+    });
+  }
+
+  // --- Checkout handling (validate small form) ---
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // form fields expected in your HTML: #name, #phone, #address
+      const nameEl = document.getElementById('name');
+      const phoneEl = document.getElementById('phone');
+      const addressEl = document.getElementById('address');
+
+      const name = nameEl ? nameEl.value.trim() : '';
+      const phone = phoneEl ? phoneEl.value.trim() : '';
+      const address = addressEl ? addressEl.value.trim() : '';
+
+      if (cart.length === 0) {
+        alert('Your cart is empty. Please add items before checking out.');
+        return;
+      }
+
+      if (!name || !phone || !address) {
+        alert('Please fill in name, phone and address before proceeding to checkout.');
+        return;
+      }
+
+      // create a simple summary for confirmation
+      const itemsSummary = cart.map(i => `${i.title} × ${i.qty} = ${formatCurrency(i.priceNumber * i.qty)}`).join('\n');
+      const totalNum = cart.reduce((s, it) => s + (it.priceNumber * it.qty), 0);
+
+      // You can replace this alert with a real submit or an API call later
+      alert(`Order summary:\n\n${itemsSummary}\n\nTotal: ${formatCurrency(totalNum)}\n\nShipping to:\n${name}\n${phone}\n${address}\n\nThank you!`);
+
+      // clear cart and close drawer
+      cart.length = 0;
+      renderCart();
+      closeCart();
+
+      // optionally clear form fields
+      if (nameEl) nameEl.value = '';
+      if (phoneEl) phoneEl.value = '';
+      if (addressEl) addressEl.value = '';
+    });
+  } else {
+    // if there's no checkout button element yet, we don't error; maybe user hasn't pasted the enhanced side-cart markup
+    // console.info('No #checkout-btn found; checkout button functionality not attached.');
+  }
+
+  // initial render (empty)
+  renderCart();
+});
+</script>
+
+
+
+
+</body>
+</html>
